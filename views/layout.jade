@@ -3,7 +3,13 @@ html(ng-app="myApp")
   head
     meta(charset='utf8')
     base(href='/')
-    title Angular Express Seed App
-    link(rel='stylesheet', href='/css/app.css')
+    title 6in4 Project
+    block css_link
+        link(rel='stylesheet', href='/css/app.css')
+        link(rel='stylesheet', href='/css/bootstrap/bootstrap.min.css', media='screen')
+        link(rel='stylesheet', href='/css/bootstrap/bootstrap-responsive.css', media='screen')
+
+    block head_js_link
+
   body
     block body

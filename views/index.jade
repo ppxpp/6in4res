@@ -1,23 +1,41 @@
 extends layout
 
-block body
-  div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
-    ul.menu
-      li
-        a(href='view1') view1
-      li
-        a(href='view2') view2
+block head_js_link
+  script(src='http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js',
+  type="text/javascript",
+  data-appid="101263441",
+  data-redirecturi="http://res.6able.com/qqlogin",
+  charset="utf-8")
 
+
+block body
+  div(ng-controller='indexCtrl')
     div(ng-view)
 
-    div
-      | Angular seed app: v
-      span(app-version)
-
-  script(src='js/lib/angular/angular.js')
+  script(src='js/lib/angular-1.4.8/angular.min.js')
+  script(src='js/lib/angular-1.4.8/angular-animate.min.js')
+  script(src='js/lib/angular-1.4.8/angular-cookies.min.js')
+  script(src='js/lib/angular-1.4.8/angular-route.min.js')
+  script(src='js/lib/bootstrap/ui-bootstrap-tpls-0.14.3.js')
   script(src='js/app.js')
+  script(src='js/bootstrapui.js')
   script(src='js/services.js')
   script(src='js/controllers.js')
   script(src='js/filters.js')
   script(src='js/directives.js')
+
+  script(src='js/lib/ng-file-upload/ng-file-upload-shim.min.js')
+  script(src='js/lib/ng-file-upload/ng-file-upload.min.js')
+
+  script(src='js/controller/login_ctrl.js')
+  script(src='js/controller/site_undo_ctrl.js')
+  script(src='js/controller/site_done_ctrl.js')
+  script(src='js/controller/app_undo_ctrl.js')
+  script(src='js/controller/app_detail_ctrl.js')
+  script(src='js/controller/app_done_ctrl.js')
+  script(src='js/controller/index_ctrl.js')
+  script(src='js/controller/my_sites_ctrl.js')
+  script(src='js/controller/my_apps_ctrl.js')
+  script(src='js/controller/create_site_ctrl.js')
+  script(src='js/controller/create_app_ctrl.js')
+

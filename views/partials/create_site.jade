@@ -1,0 +1,35 @@
+extends admin_layout
+
+block content
+
+  .span10
+    .row
+      form.form-horizontal(ng-submit="create()")
+        .control-group
+          label.control-label(for='title') 主标题
+          .controls
+            input#title(required, type='text', ng-model='site.title', placeholder='站点标题')
+        .control-group
+          label.control-label(for='subtitle') 副标题
+          .controls
+            input#subtitle(required, ng-model="site.subtitle", type='text', placeholder='站点副标题')
+        .control-group
+          label.control-label(for='href') 链接
+          .controls
+            input#href(required, ng-model="site.href", type='text', placeholder='站点链接')
+        .control-group
+          label.control-label(for='intro') 站点介绍
+          .controls
+            textarea#intro(required, ng-model="site.intro", rows='3')
+        .control-group
+          label.control-label 站点图标
+          .controls
+            .button(style="width: 70px; height: 70px",accept='image/*', ngf-select='upload($file)')
+              //img.img-polaroid(style='width: 70px; height: 70px', src='http://7u2me8.com1.z0.glb.clouddn.com/bd_logo1_31bdc765.png')
+              img.img-polaroid(style='width: 70px; height: 70px', src='{{site.icon}}')
+        .control-group()
+          .controls
+            button.btn.btn-primary(type='submit') 提交
+      //.button(accept='image/*', ngf-select='upload($file)') Upload on file select
+      //button(type='file', ngf-select='uploadFiles($file, $invalidFiles)', accept='image/*', ngf-max-height='1000', ngf-max-size='1MB')
+      //| Select File

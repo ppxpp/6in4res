@@ -1,0 +1,60 @@
+extends admin_layout
+
+block content
+
+  .span10
+    .row
+      table.table.table-bordered.table-hover.table-striped
+        thead
+          th ID
+          th 主标题
+          th 副标题
+          th 链接
+          th icon
+          th 简介
+          th 操作
+        tbody
+          tr(ng-repeat="item in items")
+            td {{item.id}}
+            td {{item.title}}
+            td {{item.subtitle}}
+            td
+              a(href='{{item.href}}', target="_blank") http://baidu.com
+            td
+              img.img-polaroid(width='40', height='20', src='{{item.icon}}')
+            td {{item.intro}}
+            td
+              .btn-group
+                .btn-group(uib-dropdown='')
+                  button#split-button.btn.btn-normal(type='button', ng-click="action($index, 0)") 通过
+                  button.btn.btn-normal(type='button', uib-dropdown-toggle='')
+                    span.caret
+                    span.sr-only
+                  ul.uib-dropdown-menu(role='menu', aria-labelledby='split-button')
+                    //li(role='menuitem')
+                      a(href='') 通过
+                    li(role='menuitem')
+                      a(href='',ng-click='action($index, 1)') 驳回
+    .row
+      .pagination.pagination-centered
+        //uib-pagination.pagination-sm(boundary-links='true', total-items='totalItems', ng-model='currentPage', previous-text='‹', next-text='›', first-text='«', last-text='»')
+        uib-pagination.pagination-sm(total-items='totalItems',
+        ng-model='currentPage', max-size='maxSize',
+        items-per-page='itemsPerPage', ng-change='pageChanged()',
+        boundary-links='true', rotate='false')
+        //ul
+          li.disabled
+            a(href='') Prev
+          li
+            a(href='#') 1
+          li
+            a(href='#') 2
+          li.active
+            a(href='#') 3
+          li
+            a(href='#') 4
+          li
+            a(href='#') 5
+          li
+            a(href='#') Next
+  //script(src='js/controller/admin_ctrl.js')

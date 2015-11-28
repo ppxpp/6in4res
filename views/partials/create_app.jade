@@ -1,0 +1,57 @@
+extends admin_layout
+
+block content
+
+  .span10
+    .row
+      form.form-horizontal(ng-submit="create()")
+        .control-group
+          label.control-label(for='name') 名称
+          .controls
+            input#name(required, type='text', ng-model='app.name', placeholder='应用名称')
+        .control-group
+          label.control-label(for='version') 版本号
+          .controls
+            input#version(required, type='text', ng-model="app.version", placeholder='版本号')
+        .control-group
+          label.control-label(for='package') 包名
+          .controls
+            input#package(required, type='text', ng-model='app.package', placeholder='包名')
+        .control-group
+          label.control-label(for='description') 描述
+          .controls
+            textarea#description(required, rows='3', ng-model='app.description')
+        .control-group
+          label.control-label APP图标
+          .controls
+            .button(style="width: 70px; height: 70px",accept='image/*', ngf-select='upload(3, $file)')
+              //img.img-polaroid(style='width: 70px; height: 70px', src='http://7u2me8.com1.z0.glb.clouddn.com/bd_logo1_31bdc765.png')
+              img.img-polaroid(style='width: 70px; height: 70px', src='{{app.icon}}')
+        .control-group
+          label.control-label 应用截图
+          .controls.row
+            .span3
+              .button(style="width: 160px; height: 220px",accept='image/*', ngf-select='upload(0, $file)')
+                img.img-polaroid(style='width: 160px; height: 220px', src='{{screenshots[0]}}')
+            .span3
+              .button(style="width: 160px; height: 220px",accept='image/*', ngf-select='upload(1, $file)')
+                img.img-polaroid(style='width: 160px; height: 220px', src='{{screenshots[1]}}')
+            .span3
+              .button(style="width: 160px; height: 220px",accept='image/*', ngf-select='upload(2, $file)')
+                img.img-polaroid(style='width: 160px; height: 220px', src='{{screenshots[2]}}')
+        .control-group
+          label.control-label(for='description') APK安装包
+          .controls
+            .button(style="width: 300px; height: 30px;", accept='.apk', ngf-select='upload(4, $file)')
+              //input(type='file', )
+              Strong 点击选择文件
+            blockquote
+              p {{apkName}}
+            .progress(style='width: 180px; height: 7px; margin-top: 10px', ng-show="{{apkPercent!=0 && apkPercent!=100}}")
+              .bar(style='width: {{apkPercent}}%;')
+        .control-group
+          .controls
+            button.btn.btn-primary(type='submit') 提交
+      //.button(accept='image/*', ngf-select='upload($file)') Upload on file select
+      //button(type='file', ngf-select='uploadFiles($file, $invalidFiles)', accept='image/*', ngf-max-height='1000', ngf-max-size='1MB')
+      //| Select File

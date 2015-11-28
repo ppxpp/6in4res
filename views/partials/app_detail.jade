@@ -1,0 +1,67 @@
+extends admin_layout
+
+block content
+
+  .span10
+    .row
+      form.form-horizontal
+        .control-group
+          label.control-label(for='appId') APP ID
+          .controls
+            input#appId(type='text', value="{{item.id}}", placeholder='', disabled='')
+        .control-group
+          label.control-label(for='appName') APP名称
+          .controls
+            input#appName(type='text', value='{{item.name}}', disabled='', placeholder='')
+        .control-group
+          label.control-label(for='appVersion') APP版本号
+          .controls
+            input#appVersion(type='text', value='{{item.version}}', disabled='', placeholder='')
+        .control-group
+          label.control-label(for='appPackage') APP包名
+          .controls
+            input#appPackage(type='text', value='{{item.package}}', disabled='', placeholder='')
+        .control-group
+          label.control-label(for='appSize') APP尺寸
+          .controls
+            input#appSize(type='text', value='{{item.size}}KB', disabled='', placeholder='')
+        .control-group
+          label.control-label(for='appSize') APP 审核状态
+          .controls
+            P.lead.text-info {{item.state | appState}}
+        .control-group
+          label.control-label APP图标
+          .controls
+            img.img-polaroid(style='width: 70px; height: 70px', src='{{item.icon}}')
+        .control-group
+          label.control-label(for='appPackage') APP 截屏
+          .controls
+            .btn-toolbar
+              .btn-group(ng-repeat="screenshot in item.screenshots")
+                img.img-polaroid(style='width: 160px; height: 220px', src="{{screenshot}}")
+        .control-group
+          label.control-label APP介绍
+          .controls
+            blockquote
+              p
+                | {{item.description}}
+        .control-group
+          .controls
+            button.btn(ng-click="action(1)", ng-show="isAdmin") 驳回
+            button.btn.btn-primary(ng-click="action(0)", ng-show="isAdmin") 审核通过
+            button.btn.btn-primary(ng-click="action(2)", ng-show="{{!isAdmin}}") 删除
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

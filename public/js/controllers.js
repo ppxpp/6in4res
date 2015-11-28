@@ -2,26 +2,28 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('AppCtrl', function ($scope, $http) {
-
-    $http({
-      method: 'GET',
-      url: '/api/name'
+angular.module('myApp.controllers', [])/*.
+    controller('AppCtrl', function ($scope, $http) {
+      /!*$http({
+       method: 'GET',
+       url: '/api/name'
+       }).
+       success(function (data, status, headers, config) {
+       $scope.name = data.name;
+       }).
+       error(function (data, status, headers, config) {
+       $scope.name = 'Error!';
+       });*!/
     }).
-    success(function (data, status, headers, config) {
-      $scope.name = data.name;
+    controller('MyCtrl1', function ($scope) {
+      // write Ctrl here
+      alert('myctrl1');
     }).
-    error(function (data, status, headers, config) {
-      $scope.name = 'Error!';
-    });
+    controller('MyCtrl2', function ($scope) {
+      // write Ctrl here
+      alert('myctrl2');
+    }).
+    controller('MyCtrl3', function ($scope) {
+      // write Ctrl here
 
-  }).
-  controller('MyCtrl1', function ($scope) {
-    // write Ctrl here
-
-  }).
-  controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
-
-  });
+    })*/;
