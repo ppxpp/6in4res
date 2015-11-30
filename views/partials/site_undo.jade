@@ -9,6 +9,7 @@ block content
           th ID
           th 主标题
           th 副标题
+          th 当前状态
           th 链接
           th icon
           th 简介
@@ -18,6 +19,7 @@ block content
             td {{item.id}}
             td {{item.title}}
             td {{item.subtitle}}
+            td {{item.state | siteState}}
             td
               a(href='{{item.href}}', target="_blank") http://baidu.com
             td

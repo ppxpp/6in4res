@@ -42,15 +42,22 @@ angular.module('myApp').
           });
         };
 
-        $scope.action = function(action){
-          $log.debug('action = ' + action);
+        $scope.action = function(actionCode){
+          $log.debug('action = ' + actionCode);
           //$log.debug(item);
+          var action = '';
+          if(actionCode == 0){
+            action = 'pass';
+          }else if(actionCode == 1){
+            action = 'reject';
+          }else if(actionCode == 2){
+            action = 'delete';
+          }
           var postData = {
-            'token': $scope.user.token,
             'id': id,
-            'action': (action == 0 ? 'pass' : 'reject')
+            'action': action
           };
-          $http.post('/api/check/app/action', postData).
+          $http.post('/api/check/app/action?token='+$scope.user.token, postData).
               success(function (data, status, headers, config) {
                 $log.debug(data);
                 if (data.errno === 0) {

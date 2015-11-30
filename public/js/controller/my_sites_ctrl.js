@@ -39,11 +39,11 @@ angular.module('myApp').
           }
 
           var postData = {
-            'token': $scope.user.token,
+            //'token': $scope.user.token,
             'id': item.id.toString(),
             'action': action
           };
-          $http.post('/api/check/site/action', postData).
+          $http.post('/api/check/site/action?token=' + $scope.user.token, postData).
               success(function (data, status, headers, config) {
                 $log.debug(data);
                 if (data.errno === 0) {

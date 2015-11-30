@@ -93,10 +93,11 @@ exports.check_site_action = function (request, response) {
 
   console.log('request body = ' + request.body);
   var data = JSON.stringify(request.body);
+  var token = request.query.token;
   var options = {
     host: config.server.url,
     port: config.server.port,
-    path: '/api/check/site/action',
+    path: '/api/check/site/action?token='+token,
     method: 'POST'
   };
 
@@ -264,11 +265,12 @@ exports.check_app_action = function (request, response) {
 
   //console.log(request.body);
   var data = JSON.stringify(request.body);
+  var token = request.query.token;
   //console.log('request body = ' + data);
   var options = {
     host: config.server.url,
     port: config.server.port,
-    path: '/api/check/app/action',
+    path: '/api/check/app/action?token='+token,
     method: 'POST'
   };
 
@@ -301,11 +303,12 @@ function doPostRequest(url, postData){
 
 exports.site_create = function(request, response){
   var data = JSON.stringify(request.body);
+  var token = request.query.token;
   //console.log('request body = ' + data);
   var options = {
     host: config.server.url,
     port: config.server.port,
-    path: '/api/site/create',
+    path: '/api/site/create?token='+token,
     method: 'POST'
   };
   var req = http.request(options, function (res) {
@@ -364,11 +367,12 @@ exports.site_my = function (request, response) {
 
 exports.app_create = function(request, response){
   var data = JSON.stringify(request.body);
+  var token = request.query.token;
   //console.log('request body = ' + data);
   var options = {
     host: config.server.url,
     port: config.server.port,
-    path: '/api/app/create',
+    path: '/api/app/create?token='+token,
     method: 'POST'
   };
   var req = http.request(options, function (res) {

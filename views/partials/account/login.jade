@@ -20,7 +20,7 @@ body
           .controls
             input.input-block-level(required, type='password', placeholder='密码', ng-model='credential.password')
             span.help-inline(ng-class="{true:'show', false:'hide'}[passwordError]") 密码错误
-        label.checkbox
+        //label.checkbox
           input(type='checkbox', checked='checked', value='remember-me', ng-model='credential.isAdmin')
           | 我是管理员
         button.btn.btn-large.btn-primary.btn-block(type='submit',

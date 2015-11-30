@@ -51,6 +51,11 @@ angular.module('myApp').
                 $scope.apkPercent = 0;
                 $scope.app.apk = resp.data.url;
                 $scope.apkName = file.name;
+                var size = parseInt(resp.data.size / 1024);
+                if(size == 0) {
+                  size = 1;
+                }
+                $scope.app.size = size;
               }else if(index == 3){
                 //icon
                 $scope.app.icon = resp.data.url;
@@ -92,6 +97,7 @@ angular.module('myApp').
               success(function (data, status, headers, config) {
                 if (data.errno === 0) {
                   $log.debug(data);
+                  alert('提交成功');
                   $route.reload();
                 } else {
                 }

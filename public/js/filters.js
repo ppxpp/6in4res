@@ -12,7 +12,7 @@ angular.module('myApp.filters', []).
     return function (text) {
       if(text == 'uncheck'){
         return '等待审核';
-      }else if(text = 'pass'){
+      }else if(text == 'pass'){
         return '已通过';
       }else if (text == 'reject'){
         return '已拒绝';
@@ -24,7 +24,7 @@ angular.module('myApp.filters', []).
     return function (text) {
       if(text == 'uncheck'){
         return '等待审核';
-      }else if(text = 'pass'){
+      }else if(text == 'pass'){
         return '已通过';
       }else if (text == 'reject'){
         return '已拒绝';

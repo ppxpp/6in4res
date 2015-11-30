@@ -47,7 +47,7 @@ block content
                 | {{item.description}}
         .control-group
           .controls
-            button.btn(ng-click="action(1)", ng-show="isAdmin") 驳回
+            button.btn(ng-click="action(1)", ng-show="isAdmin") 拒绝
             button.btn.btn-primary(ng-click="action(0)", ng-show="isAdmin") 审核通过
             button.btn.btn-primary(ng-click="action(2)", ng-show="{{!isAdmin}}") 删除
 

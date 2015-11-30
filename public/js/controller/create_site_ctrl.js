@@ -50,6 +50,7 @@ angular.module('myApp').
               success(function (data, status, headers, config) {
                 if (data.errno === 0) {
                   $log.debug(data);
+                  alert('提交成功');
                   $route.reload();
                 } else {
                 }

@@ -9,8 +9,8 @@ angular.module('myApp.services', []).
     value('version', '0.1');
 
 angular.module('myApp.services', ['ngCookies'])
-    .factory('authService', ['$rootScope', '$http', '$cookies', 'AUTH_EVENT', 'USER_ROLES',
-      function ($rootScope, $http, $cookies, AUTH_EVENT, USER_ROLES) {
+    .factory('authService', ['$rootScope', '$http', '$cookies', '$log', 'AUTH_EVENT', 'USER_ROLES',
+      function ($rootScope, $http, $cookies, $log, AUTH_EVENT, USER_ROLES) {
 
         var user = {
           userId: '',
@@ -85,6 +85,7 @@ angular.module('myApp.services', ['ngCookies'])
           $http.post('/api/account/login', credentials).
               success(function (data, status, headers, config) {
                 if (data.errno === 0) {
+                  $log.debug(data);
                   //$location.path('/admin');
                   updateUser(data.userId, data.userName, data.role, data.token);
                   $rootScope.$broadcast(AUTH_EVENT.loginSuccess, user);

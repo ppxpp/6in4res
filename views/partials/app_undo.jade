@@ -11,7 +11,7 @@ block content
           th icon
           th 版本
           th 安装包大小
-          th 简介
+          th 当前审核状态
           th 操作
         tbody
           tr(ng-repeat="item in items")
@@ -21,7 +21,8 @@ block content
               img.img-polaroid(width='40', height='20', src='{{item.icon}}')
             td {{item.version}}
             td {{item.size}}KB
-            td {{item.description}}
+            //td {{item.description}}
+            td {{item.state | appState}}
             td
               a.btn(href="#check/app/undo/detail/{{item.id}}") 查看
     .row

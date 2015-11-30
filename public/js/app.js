@@ -145,7 +145,7 @@ var app = angular.module('myApp', [
           }).
         //其他情况
           otherwise({
-            redirectTo: '/res/site/checked'
+            redirectTo: '/login'
           });
 
       //$locationProvider.html5Mode(true);

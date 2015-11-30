@@ -4,8 +4,8 @@
 
 angular.module('myApp').
     controller('loginCtrl', ['$scope', '$location',
-      '$http', '$log', 'authService', 'AUTH_EVENT', 'USER_ROLES',
-      function ($scope, $location, $http, $log, authService, AUTH_EVENT, USER_ROLES) {
+      '$http', '$cookies', '$log', 'authService', 'AUTH_EVENT', 'USER_ROLES',
+      function ($scope, $location, $http, $cookies, $log, authService, AUTH_EVENT, USER_ROLES) {
 
         //alert(authService.isAuthenticated());
         //$scope.loading = false;
@@ -23,6 +23,11 @@ angular.module('myApp').
           $location.path('/admin');
         }*/
 
+        if(QC.Login.check()) {
+          QC.Login.getMe(function (openId, accessToken) {
+
+          });
+        }
 
         var cbLoginFun = function (oInfo, oOpts) {
           alert(oInfo.nickname);
@@ -38,8 +43,8 @@ angular.module('myApp').
         $scope.passwordError = false;
 
         $scope.credential = {
-          'userName': 'admin@6able.com',
-          'password': 'password',
+          'userName': $cookies.get('userName'),
+          'password': $cookies.get('password'),
           'type': 'normal',
           'openId': ''
         };
@@ -54,6 +59,8 @@ angular.module('myApp').
         $scope.$on(AUTH_EVENT.loginSuccess, function (event, user) {
           //alert(user.userId);
           //$scope.loading = false;
+          $cookies.put('userName', $scope.credential.userName);
+          $cookies.put('password', $scope.credential.password);
           if(user.role == USER_ROLES.admin) {
             $location.path('/admin');
           }else if(user.role == USER_ROLES.user){
